@@ -1,0 +1,31 @@
+<tool id="rna_robo" name="Search RNA" version="0.1.0">
+  <description>structural motif</description>
+  <command interpreter="python">RNArobo.py $input1 $input2 $option1 $option2 $output</command>
+  <inputs>
+    <param format="fasta" name="input1" type="data" label="Source file(fasta)"/>
+    <param format="descriptor" name="input2" type="data" label="Source file(descriptor)"/>
+    <param name="option1" type="select" label="options:" multiple="true" display="checkboxes">
+      <option value="c">search both strands of the database</option>
+      <option value="u">report only non-overlapping occurrences</option>
+      <option value="f">print output in plain FASTA format</option>
+      <option value="s">print output in FASTA format with element separators</option>
+    </param>
+    <param name="option2" size="4" type="float" value="1" min="0" max="1" label="set max allowed ratio of “N”s in reported occurrences to their length; must be within &lt;0,1&gt;" />
+  </inputs>
+  <outputs>
+    <data format="txt" name="output" />
+  </outputs>
+
+  <tests>
+    <test>
+      <param name="input" value="fa_gc_content_input.fa"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+An RNA structural motif searching tool. RNArobo can search sequence databases in FASTA format for a motif defined by a "descriptor", which can specify primary and secondary structure constraints.<br />
+<a href="https://github.com/rampasek/RNArobo">https://github.com/rampasek/RNArobo</a>
+  </help>
+
+</tool> 

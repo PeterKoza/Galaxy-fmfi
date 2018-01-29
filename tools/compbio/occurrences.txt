@@ -1,0 +1,19 @@
+Starting rnarobo: version 2.1.0, September 2013
+------------------------------------------------------------------
+Database file:                  /home/peter/Desktop/galaxy-dev/database/files/000/dataset_2.dat
+Descriptor file:                /home/peter/Desktop/galaxy-dev/database/files/000/dataset_3.dat
+Complementary strand searched:  no
+User-predefined search order:   none
+Order training params:          k=3 limit=50 alpha=0.01 iter=true
+------------------------------------------------------------------
+
+ seq-f  seq-t     name      description
+------ ------ ------------ ------------
+     3     11         seq1             
+|GCG|ACT|CGC|
+
+----- SEARCH DONE -----
+Total bases scanned: 169
+Reported matches:    1 (1 total)
+Time since start:    00h 00m 00s (0.00s)
+Final search order:  S1 H1 
