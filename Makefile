@@ -141,6 +141,8 @@ client-watch: node-deps ## A useful target for parallel development building.
 charts: node-deps ## Rebuild charts
 	cd client && yarn run build-charts
 
+RNArobo: # configure RNArobo
+    cd tools/compbio/RNArobo && make
 
 # Release Targets
 release-create-rc: release-ensure-upstream ## Create a release-candidate branch

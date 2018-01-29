@@ -1,0 +1,21 @@
+Starting rnarobo: version 2.1.0, September 2013
+------------------------------------------------------------------
+Database file:                  sample.fa
+Descriptor file:                sample.des
+Complementary strand searched:  yes
+User-predefined search order:   none
+Order training params:          k=3 limit=50 alpha=0.01 iter=true
+------------------------------------------------------------------
+
+ seq-f  seq-t     name      description
+------ ------ ------------ ------------
+     3     11         seq1             
+|GCG|ACT|CGC|
+    11      3         seq2             
+|GCG|ACT|CGC|
+
+----- SEARCH DONE -----
+Total bases scanned: 338
+Reported matches:    2 (2 total)
+Time since start:    00h 00m 00s (0.00s)
+Final search order:  S1 H1 

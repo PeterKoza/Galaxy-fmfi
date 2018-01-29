@@ -138,3 +138,9 @@ doc/source/dev/schema.rst
 *.rej
 *~
 .idea
+
+# RNArobo
+*~
+/rnarobo
+/source/*.[do]
+/nbproject/
