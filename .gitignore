@@ -53,7 +53,6 @@ reports.ini
 tool_shed_wsgi.ini
 
 # Config files.
-datatypes_conf.xml
 tool_conf.xml
 external_service_types_conf.xml
 migrated_tools_conf.xml
@@ -140,7 +139,7 @@ doc/source/dev/schema.rst
 .idea
 
 # RNArobo
-*~
 /rnarobo
 /source/*.[do]
 /nbproject/
+tools/compbio/occurrences.txt
