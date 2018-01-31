@@ -73,6 +73,7 @@ config/plugins/interactive_environments/**/*.ini
 !config/plugins
 static/welcome.html.*
 static/welcome.html
+test/shed_functional/test_data/emboss/datatypes/
 
 # Tool data.
 tool-data/annotation_profiler_options.xml
