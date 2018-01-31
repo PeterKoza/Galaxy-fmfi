@@ -3,7 +3,7 @@
   <command interpreter="python">RNArobo.py $input1 $input2 $option1 $option2 $output</command>
   <inputs>
     <param format="fasta" name="input1" type="data" label="Source file(fasta)"/>
-    <param format="descriptor" name="input2" type="data" label="Source file(descriptor)"/>
+    <param format="des" name="input2" type="data" label="Source file(descriptor)"/>
     <param name="option1" type="select" label="options:" multiple="true" display="checkboxes">
       <option value="c">search both strands of the database</option>
       <option value="u">report only non-overlapping occurrences</option>
@@ -19,7 +19,7 @@
   <tests>
     <test>
       <param name="input" value="fa_gc_content_input.fa"/>
-      <output name="out_file1" file="fa_gc_content_output.txt"/>
+      <output name="out_file1" file="fa_gc_content_output.txt"/>form
     </test>
   </tests>
 
