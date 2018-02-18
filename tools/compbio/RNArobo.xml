@@ -1,5 +1,5 @@
 <tool id="rna_robo" name="Search RNA" version="0.1.0">
-  <description>structural motif</description>
+  <description>structural motif(RNArobo)</description>
   <command interpreter="python">RNArobo.py $input1 $input2 $option1 $option2 $output</command>
   <inputs>
     <param format="fasta" name="input1" type="data" label="Source file(fasta)"/>
@@ -24,8 +24,11 @@
   </tests>
 
   <help>
-An RNA structural motif searching tool. RNArobo can search sequence databases in FASTA format for a motif defined by a "descriptor", which can specify primary and secondary structure constraints.<br />
-<a href="https://github.com/rampasek/RNArobo">https://github.com/rampasek/RNArobo</a>
+An RNA structural motif searching tool. `RNArobo`__ can search sequence databases in `FASTA`__ format for a motif defined by a `descriptor`__, which can specify primary and secondary structure constraints.
+
+ .. __: https://github.com/rampasek/RNArobo
+ .. __: https://galaxyproject.org/learn/datatypes/#fasta
+ .. __: http://compbio.fmph.uniba.sk/rnarobo/rnarobo-readme.pdf
   </help>
 
 </tool> 
