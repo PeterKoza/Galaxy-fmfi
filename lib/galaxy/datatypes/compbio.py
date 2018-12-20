@@ -9,6 +9,9 @@ from galaxy.datatypes.metadata import MetadataElement
 
 log = logging.getLogger(__name__)
 
+UIPAC = [ 'a', 'c', 'g', 't', 'r', 'y', 's', 'w', 'k', 'm', 'b', 'd', 'h', 'v', 'n', '*',
+	  'A', 'C', 'G', 'T', 'R', 'Y', 'S', 'W', 'K', 'M', 'B', 'D', 'H', 'V', 'N' ]
+
 class Descriptor(data.Text):
     """
     delimited data in descriptor format
@@ -210,7 +213,7 @@ class Descriptor(data.Text):
 
 
     def getNextBracket(self, letters, j):
-        """Finds end of number in sequence
+        """Finds end of bracket "]" in sequence
            EG: [10]ATG -> 3
                NNN[3]N -> 5
             Args:
@@ -242,3 +245,90 @@ class Descriptor(data.Text):
             return int(num)
         except:
             return None
+
+    
+
+
+
+class RNArobo(data.Text):
+    
+    file_ext = "robo"
+    
+    def sniff(self, filename):
+        pass
+
+
+
+
+
+class FoldFilter(data.Text):
+    file_ext = "ftr"
+
+    def sniff(self, filename):
+        try:
+            fh = open(filename)
+            while True:
+                line = fh.readline()
+                if not line:
+                    break # EOF
+                line = line.strip()
+                if line == "":
+                    pass # empty line
+                elif line[0] == "#":
+                    pass # comments
+                else:
+                    if self.checkLine(line) == False:
+                        return False
+            fh.close()
+            return True
+        except Exception:
+            pass
+        return True
+
+    def checkLine(self, line):
+        parameters = line.split()
+        if len(parameters) < 3 or len(parameters) > 4:
+            return False
+        n = parameters[0]
+        w = parameters[1]
+        pn_or_tail = ""
+        if parameters[2] == "pn" or parameters[2][-1] == "t":
+            pn_or_tail = parameters[2]
+            el = parameters[3]
+        else:
+            el = parameters[2]
+        if el[0] != "[" or el[-1] != "]":
+            return False
+        if self.checkParams(n, w, pn_or_tail, el) == False:
+            return False
+        return True
+
+    def checkParams(self, n, w, pn_or_tail, el):
+        els = el.split(",")
+        if n[-1] != ":" or len(n) <= 1:
+            return False
+        elif w[-1] != "w" or not str.isdigit(w[:-1]):
+            return False
+        elif pn_or_tail != "":
+            if pn_or_tail != "pn" and (pn_or_tail[-1] != "t" or not str.isdigit(pn_or_tail[:-1])):
+                return False
+        elif els[0] == "":
+            return False
+        return True
+
+
+
+
+from galaxy.datatypes.tabular import Tabular
+
+class FoldFilterTabular(Tabular):
+    file_ext = "ftrt"
+    column_names = ['sequence']
+
+    def set_meta(self, dataset, **kwd):
+        Tabular.set_meta(self, dataset)
+        ftrtFile = open(dataset.file_name, "r")
+        firstLine = ftrtFile.readline()
+        ftrtFile.close()
+        dataset.metadata.column_names = ["sequence"] + firstLine.split("\t")[1:-1] + ["total score"]
+

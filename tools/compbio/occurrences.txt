@@ -1,45 +1,22 @@
-Starting rnarobo: version 2.1.0, September 2013
-------------------------------------------------------------------
-Database file:                  /home/peter/Desktop/galaxy-dev/database/files/000/dataset_43.dat
-Descriptor file:                /home/peter/Desktop/galaxy-dev/database/files/000/dataset_42.dat
-Complementary strand searched:  yes
-User-predefined search order:   none
-Order training params:          k=3 limit=50 alpha=0.01 iter=true
-------------------------------------------------------------------
-
- seq-f  seq-t     name      description
------- ------ ------------ ------------
-880789 880877  NC_006067.1  Yarrowia lipolytica CLIB122 chromosome A complete sequence
+>880789-880877_NC_006067.1  Yarrowia lipolytica CLIB122 chromosome A complete sequence
 |CAAAGAGGGGATTGC|GGAGAG|CTGAAGA|GATT|TTACA|GCGTT|GAAA|TGTT|TGGTATCGTCCT|GATCA|AC|CTCTT|TGCCCACCCTACAAG|
-926851 926758  NC_006067.1  Yarrowia lipolytica CLIB122 chromosome A complete sequence
-|CACAACGGGGGACTG|GCTGCC|CTGATGA|GACC|AAACCCATGACTA|GCGTC|GAAA|CACC|AACAGTGGG|GGCTG|TT|GGTGT|CGGCAGCCACTAGTC|
-1037942 1037853  NC_006069.1  Yarrowia lipolytica CLIB122 chromosome C complete sequence
-|TCCTGTTTCATATGG|CTGTC|CTGATGA|GACGT|ATCCTGACT|AGCGTC|GAAA|CACT|GCTGTGGC|GAGTG|TC|GACAG|CCAGCTAGTCCACGT|
-2071680 2071773  NC_006069.1  Yarrowia lipolytica CLIB122 chromosome C complete sequence
+>2071680-2071773_NC_006069.1  Yarrowia lipolytica CLIB122 chromosome C complete sequence
 |CACAATGGGGGACTG|GCTGCC|CTGATGA|GATC|AAACCCATGACTA|GCGTC|GAAA|CATC|AACAGTGGG|GGCTG|TT|GGTGT|CGGCAGCCACTAGTC|
-2240493 2240586  NC_006069.1  Yarrowia lipolytica CLIB122 chromosome C complete sequence
+>2240493-2240586_NC_006069.1  Yarrowia lipolytica CLIB122 chromosome C complete sequence
 |CACAACGGGGGACTG|GCTGCC|CTGATGA|GACC|AAACCCATGACTA|GCGTC|GAAA|CATC|AACAGTGGG|GGCTG|TT|GGTGT|CGGCAGCCACTAGTC|
-603124 603035  NC_006070.1  Yarrowia lipolytica CLIB122 chromosome D complete sequence
-|GGGTGGAGACGGCCT|GATAG|CTGAGGA|GTTG|AACCGGCT|CAGCC|GAAA|GTTTG|CAGCATTTCGTG|TAGT|TC|TATT|CTTCTCGATTCCCAC|
-1831975 1832068  NC_006070.1  Yarrowia lipolytica CLIB122 chromosome D complete sequence
+>1831975-1832068_NC_006070.1  Yarrowia lipolytica CLIB122 chromosome D complete sequence
 |CACAACGGGGGACTG|GCTGCC|CTGATGA|GACC|CAACCCATGACTA|GCGTC|GAAA|CATC|AACAGTGGG|GGCTG|TT|GGTGT|CGGCAGCCACTAGTC|
-1881176 1881091  NC_006070.1  Yarrowia lipolytica CLIB122 chromosome D complete sequence
-|CGGGCATGAGTTTGA|TCTTT|CTGATGA|GTTT|GTGTCA|AAGTT|GAAA|CATC|AGGAGGAGA|GATG|GA|ACAGGA|AAACAGCTGGGTGGT|
-1990461 1990554  NC_006070.1  Yarrowia lipolytica CLIB122 chromosome D complete sequence
+>1990461-1990554_NC_006070.1  Yarrowia lipolytica CLIB122 chromosome D complete sequence
 |CACAATGGGGGACTG|GCTGCC|CTGATGA|GATC|AAACCCATGACTA|GCGTC|GAAA|CATC|AACAGTGGG|GGCTG|TT|GGTGT|CGGCAGCCACTAGTC|
-2597993 2597911  NC_006070.1  Yarrowia lipolytica CLIB122 chromosome D complete sequence
-|TGTCCACCGAAAGCA|AGTTG|CTGAAGA|GATA|TCGG|TATC|GAAA|TGGT|AATAGGAT|GATCA|GA|TCGACT|AGGAGAATAGATTTC|
-1892910 1892998  NC_006071.1  Yarrowia lipolytica CLIB122 chromosome E complete sequence
+>1892910-1892998_NC_006071.1  Yarrowia lipolytica CLIB122 chromosome E complete sequence
 |ATACGGCCGATGGAA|GATG|CTGAGGA|GTCGT|GTTT|GGTGGC|GAAA|AACTG|TTCGACCCGCTTTT|TAGT|GT|CGTC|AAAGGAGACATTGCA|
-2386920 2387016  NC_006071.1  Yarrowia lipolytica CLIB122 chromosome E complete sequence
+>2386920-2387016_NC_006071.1  Yarrowia lipolytica CLIB122 chromosome E complete sequence
 |ATGAGTCTGTGGAGC|TGAGT|CTGAAGA|GTTCG|GCTTGAGCAATGA|TGCGAC|GAAA|GTTGG|TGAGTGCGGTCA|TGAT|CC|ATTG|AGGAGGAGATCTGTG|
-1873859 1873950  NC_006072.1  Yarrowia lipolytica CLIB122 chromosome F complete sequence
-|ACAACGGGGGACTGG|CTGCC|CTGATGA|GACC|AAACCCATGACTA|GCGTC|GAAA|CATC|AACAGTGGG|GGCTG|TT|GGTG|TCGGCAGCTACTAGT|
-2111665 2111574  NC_006072.1  Yarrowia lipolytica CLIB122 chromosome F complete sequence
-|ACAACGGGGGACTGG|CTGCC|CTGATGA|GACC|AAACCCATGACTA|GCGTC|GAAA|CATC|AACAGTGGG|GGCTG|TT|GGTG|TCGGTAGCCACTAGT|
+>1873858-1873951_NC_006072.1  Yarrowia lipolytica CLIB122 chromosome F complete sequence
+|CACAACGGGGGACTG|GCTGCC|CTGATGA|GACC|AAACCCATGACTA|GCGTC|GAAA|CATC|AACAGTGGG|GGCTG|TT|GGTGT|CGGCAGCTACTAGTC|
 
 ----- SEARCH DONE -----
-Total bases scanned: 41099770
-Reported matches:    14 (14 total)
-Time since start:    00h 00m 01s (0.89s)
-Final search order*: S2 S4 H3 H2 S7 H1 S6 S1 S5 S3 
+Total bases scanned: 20549885
+Reported matches:    8 (8 total)
+Time since start:    00h 00m 01s (0.56s)
+Final search order*: S2 S4 H2 H1 S1 H3 S6 S7 S5 S3 

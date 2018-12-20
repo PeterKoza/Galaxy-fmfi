@@ -1,0 +1,22 @@
+<tool id="fold_filter" name="Fold filter" version="0.1.0">
+  <description>for RNArobo output</description>
+  <command interpreter="python">fold_filter.py $input1 $input2 $input3 $output</command>
+  <inputs>
+    <param format="robo" name="input1" type="data" label="Source file(robo)"/>
+    <param format="des" name="input2" type="data" label="Source file(descriptor)"/>
+    <param format="ftr" name="input3" type="data" label="Source file(fold filter)"/>
+  </inputs>
+  
+  <outputs>
+    <data format="ftrt" name="output" />
+  </outputs>
+
+  <help>
+An RNA structural motif searching tool. `RNArobo`__ can search sequence databases in `FASTA`__ format for a motif defined by a `descriptor`__, which can specify primary and secondary structure constraints.
+
+ .. __: https://github.com/rampasek/RNArobo
+ .. __: https://galaxyproject.org/learn/datatypes/#fasta
+ .. __: http://compbio.fmph.uniba.sk/rnarobo/rnarobo-readme.pdf
+  </help>
+
+</tool> 

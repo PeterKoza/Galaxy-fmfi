@@ -139,6 +139,9 @@ doc/source/dev/schema.rst
 *~
 .idea
 
+#VScode
+.vscode
+
 # RNArobo
 /rnarobo
 /source/*.[do]

@@ -1,0 +1,12 @@
+<tool id="comver robo format to BED" name="ROBO to BED" version="1.0.0">
+  <description>convert</description>
+  <command interpreter="python">robo2bed.py $input $output</command>
+  <inputs>
+    <param name="input" type="data" format="robo" label="robo file"/>
+  </inputs>
+  <outputs>
+    <data name="output" format="bed"/>
+  </outputs>
+  <help>
+  </help>
+</tool>

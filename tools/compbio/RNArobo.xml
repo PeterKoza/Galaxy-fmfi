@@ -13,13 +13,13 @@
     <param name="option2" size="4" type="float" value="1" min="0" max="1" label="set max allowed ratio of “N”s in reported occurrences to their length; must be within &lt;0,1&gt;" />
   </inputs>
   <outputs>
-    <data format="txt" name="output" />
+    <data format="robo" name="output" />
   </outputs>
 
   <tests>
     <test>
       <param name="input" value="fa_gc_content_input.fa"/>
-      <output name="out_file1" file="fa_gc_content_output.txt"/>form
+      <output name="out_file1" file="fa_gc_content_output.robo"/>form
     </test>
   </tests>
 

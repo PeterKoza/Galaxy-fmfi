@@ -1,0 +1,11 @@
+<tool id="CONVERTER_robo_to_bed" name="Convert robo to bed" version="1.0.0">
+    <command>python '$__tool_directory__/robo_converter.py' '$input' '$output' 'b'</command>
+    <inputs>
+        <param name="input" type="data" format="robo" label="robo file"/>
+    </inputs>
+    <outputs>
+        <data name="output" format="bed"/>
+    </outputs>
+    <help>
+    </help>
+</tool>
