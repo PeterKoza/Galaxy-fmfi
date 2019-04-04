@@ -6,7 +6,7 @@
     <inputs action="http://localhost:8090/getFoldFilter" check_values="false" method="post">
         <display>go to editor server $GALAXY_URL</display>
         <param name="GALAXY_URL" type="baseurl" value="/tool_runner" />
-        <param name="tool_id" type="hidden" value="fold_filter" />
+        <param name="tool_id" type="hidden" value="fold_filter_editor" />
         <param name="hgta_compressType" type="hidden" value="none" />
         <param name="hgta_outputType" type="hidden" value="ftr" />
     </inputs>

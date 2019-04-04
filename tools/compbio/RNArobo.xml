@@ -8,12 +8,15 @@
       <option value="c">search both strands of the database</option>
       <option value="u">report only non-overlapping occurrences</option>
       <option value="f">print output in plain FASTA format</option>
-      <option value="s">print output in FASTA format with element separators</option>
     </param>
     <param name="option2" size="4" type="float" value="1" min="0" max="1" label="set max allowed ratio of “N”s in reported occurrences to their length; must be within &lt;0,1&gt;" />
   </inputs>
   <outputs>
-    <data format="robo" name="output" />
+    <data format="robo" name="output">
+        <change_format>
+            <when input="option1" value="f" format="fasta" />
+        </change_format>
+    </data>
   </outputs>
 
   <tests>

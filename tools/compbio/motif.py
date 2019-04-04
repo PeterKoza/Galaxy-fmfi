@@ -1,6 +1,5 @@
 class Motif():
     def __init__(self, line):
-        # TODO: check motifmap
         self.name = ""
         self.weight = 0
         self.score = 0
@@ -24,7 +23,6 @@ class Motif():
             elif param == "pn":
                 self.per_nucleotide = 1
             else:
-                #TODO raise error
                 pass
 
 

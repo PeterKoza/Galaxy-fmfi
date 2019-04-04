@@ -1,0 +1,6 @@
+<display id="send_to_foldfilter_editor" version="1.0.0" name="display in">
+    <link id="s_t_f_e" name="FoldFilter editor">
+        <url>http://localhost:8090/generateFtr?galaxy_descriptor=${des_file.url}&amp;file_name=${des_file.name}</url>
+        <param type="data" name="des_file" url="galaxy.des" />
+    </link>
+</display>

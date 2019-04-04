@@ -1,13 +1,6 @@
-
-<display id="send_to_descriptor_editor" version="0.0.0" name="display in">
-    <link id="s_t_d_e" name="descriptor editor">
-        <url>http://localhost:8090/descriptor?input=${open(dataset.file_name).read()}</url>
+<display id="send_to_descriptor_editor" version="1.0.0" name="display in">
+    <link id="s_t_d_e" name="Descriptor editor">
+        <url>http://localhost:8090/generateDes?galaxy_descriptor=${des_file.url}</url>
+        <param type="data" name="des_file" url="galaxy.des" />
     </link>
 </display>
-
-<!-- 
-<display id="send_to_descriptor_editor" version="0.0.0" name="display in">
-    <dynamic_links>
-        <url>http://localhost:8090/descriptor</url>
-    </dynamic_links>
-</display>-->

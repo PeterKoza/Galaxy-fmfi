@@ -4,6 +4,10 @@ cd "$(dirname "$0")"
 
 . ./scripts/common_startup_functions.sh
 
+export SGE_ROOT=/var/lib/gridengine
+export SGE_CELL=default
+export DRMAA_LIBRARY_PATH=/usr/lib/libdrmaa.so
+
 # If there is a file that defines a shell environment specific to this
 # instance of Galaxy, source the file.
 if [ -z "$GALAXY_LOCAL_ENV_FILE" ];

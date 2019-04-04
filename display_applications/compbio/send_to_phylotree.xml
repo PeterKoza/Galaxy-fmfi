@@ -1,0 +1,6 @@
+<display id="send_to_phylotree" version="1.0.0" name="display in">
+    <link id="s_t_p" name="Phylotree">
+        <url>http://localhost:8090/showPhylotree?galaxy_nhx=${nhx_file.url}</url>
+        <param type="data" name="nhx_file" url="galaxy.nhx" />
+    </link>
+</display>

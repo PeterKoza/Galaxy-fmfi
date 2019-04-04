@@ -6,7 +6,7 @@ class RoboConverter():
 
     # ------ parse robo format to fasta
     def roboToFasta(self, roboFile):
-        rf = open(roboFile);
+        rf = open(roboFile)
         text = rf.read().split("\n")
         result = ""
         separators = 0
@@ -40,7 +40,7 @@ class RoboConverter():
 
     # ------ parse robo format to BED
     def roboToBed(self, roboFile):
-        rf = open(roboFile);
+        rf = open(roboFile)
         text = rf.read().split("\n")
         result = ""
         separators = 0
@@ -63,15 +63,16 @@ class RoboConverter():
     def createBadLine(self, line):
         parameters = line.split()
         startPos = int(parameters[0])
-        endPos = int(parameters[0])
+        endPos = int(parameters[1])
         strand = "+"
         chromosone = " ".join(parameters[2:])
         if startPos > endPos:
             strand = "-"
             chromosone = " ".join(parameters[2:-1])
             startPos, endPos = endPos, startPos
-        name = chromosone + ":" + str(startPos) + "-" + str(endPos)
-        res = chromosone + "\t" + str(startPos) + "\t" + str(endPos) + "\t"
+        chrom = chromosone.split(" ")[0]
+        name = chrom + ":" + str(startPos) + "-" + str(endPos)
+        res = chrom + "\t" + str(startPos) + "\t" + str(endPos) + "\t"
         res += name + "\t0\t" + strand + "\n"
         return res
 

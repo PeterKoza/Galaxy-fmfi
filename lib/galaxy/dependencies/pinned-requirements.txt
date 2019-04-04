@@ -87,3 +87,6 @@ ecdsa==0.13
 
 # GenomeSpace dependencies
 python-genomespaceclient==0.1.8
+
+# Added manually
+rpy2==2.8.6

@@ -4,14 +4,15 @@
 
 import sys
 import os
+import time
 
-
+#time.sleep(50)
 
 fasta = sys.argv[1]
 descriptor = sys.argv[2]
 options = sys.argv[3].replace(',', '')
 nratio = sys.argv[4]
-output = open(sys.argv[5], 'w')
+output = sys.argv[5]
 
 
 class ComputeRNArobo():
@@ -30,24 +31,32 @@ class ComputeRNArobo():
 		os.chdir(self.globalPath + "tools/compbio")
 
 		os.chdir('RNArobo')
-		os.system("./rnarobo " + params + " > ../occurrences.txt")
+		os.system("./rnarobo " + params + " > " + self.output)
 		os.chdir("..")
 
-		occurrences = open("occurrences.txt")
-		output.write(occurrences.read())
-		occurrences.close()
+		if "f" in self.options:		# if format is .fasta than cut ---- Search Done ---- part of file 
+			occurrencesFile = open(self.output, "r")
+			occurrences = occurrencesFile.read()
+			occurrencesFile.close()
+			occurrences = self.cutDownSearchPart(occurrences)
+			occurrencesFile = open(self.output, "w")
+			occurrencesFile.write(occurrences)
+			occurrencesFile.close()
 
-		os.chdir(self.globalPath + "database" + self.localPath)
 
-		output.close()
 
 	def getParameters(self):
 		result = ""
 		if self.options != "None":
 			result += "-" + self.options + " "
 		result += "--nratio " + self.nratio + " "
-		result += descriptor + " " + fasta
+		result += self.descriptor + " " + self.fasta
 		return result
+
+
+	def cutDownSearchPart(self, occurrences):
+		content = occurrences.split("----- SEARCH DONE -----")
+		return content[0]
 
 
 

@@ -9,34 +9,35 @@ class FoldFilter():
         self.filter = []
         self.data = []
         self.finalResult = []
+        self.globalPath, self.localPath = os.getcwd().split("database")
 
     def parseMotifMap(self, desFile):
-        file = open(desFile, "r");
-        line = file.readline();
+        file = open(desFile, "r")
+        line = file.readline()
         while line:
-            line = line.strip();
+            line = line.strip()
             if line == "":
                 pass
             elif line[0] == "#":
                 pass
             else:
-                self.motifMap = line.split();
+                self.motifMap = line.split()
                 break
-            line = file.readline();
+            line = file.readline()
         file.close()
 
     def parseFilterConfig(self, ftrFile):
-        file = open(ftrFile, "r");
-        line = file.readline();
+        file = open(ftrFile, "r")
+        line = file.readline()
         while line:
-            line = line.strip();
+            line = line.strip()
             if line == "":
                 pass
             elif line[0] == "#":
                 pass
             else:
                 self.filter.append(Motif(line))
-            line = file.readline();
+            line = file.readline()
         file.close()
 
     def recalculateWeights(self):
@@ -69,6 +70,11 @@ class FoldFilter():
                 map = []
                 for i in range(len(self.motifMap)):
                     if self.motifMap[i] in subMotif.elements  or  self.motifMap[i][:-1] in subMotif.elements:
+                        if len(sequence) - 1 < i:
+                            print "sequence: ", sequence
+                            print "motifMap: ", self.motifMap
+                            print 'Descriptor is not consistent with RNArobo output.'
+                            raise Exception('Descriptor is not consistent with RNArobo output.')
                         subSeq.append(sequence[i])
                         map.append(self.motifMap[i])
                 nested = self.isNested(map)
@@ -85,7 +91,7 @@ class FoldFilter():
 
                 subMotif.unw_score = -1 * min_en
                 if subMotif.per_nucleotide:
-                    subMotif.unw_csore = float(subMotif.unw_csore) / (0.1 * len(structure))
+                    subMotif.unw_score = float(subMotif.unw_score) / (0.1 * len(structure))
                 if subMotif.tail: # tail
                     pairPos = [None] * len(structure)
                     stack1 = []
@@ -120,23 +126,24 @@ class FoldFilter():
                 subMotifHash["min_en"] = min_en
                 subMotifsHash[subMotif.name] = subMotifHash
                 seqScore += subMotif.score
-                print(subMotifHash)
             self.finalResult.append((seqScore, subMotifsHash))
 
 
     def getTabularFormat(self):
         names = [filter.name for filter in self.filter]
-        result = "\t" + "\t".join(names) + "\t\n"
+        result = "#sequence\ttotal score\t" + "\t".join(names) + "\n"
         for i, res in enumerate(self.finalResult):
             seqName = self.data[i][0].split()
             seqName = seqName[2] + ":" + seqName[0] + "-" + seqName[1]
             result += seqName + "\t"
+            result +=  str(res[0]) + "\t"
+            scores = []
             for name in names:
                 score = res[1][name]["score"]
                 if score == 0:
                     score = int(score)
-                result += str(score) + "\t"
-            result +=  str(res[0]) + "\n"
+                scores.append(str(score))
+            result += "\t".join(scores) + "\n"
         return result
 
 
@@ -161,11 +168,19 @@ class FoldFilter():
         return pseudoknotted
 
     def runRNAcofold(self, seq):
-        result = os.popen("echo '" + seq + "'|RNAcofold --noPS")
-        result = result.read().split()
-        structure = result[1].replace("&", "")
-        min_en = result[-1][:-1].replace("(", "")
-        min_en = float(min_en)
+        tmpSeq = seq.split("&")
+        if tmpSeq[0] != tmpSeq[1] and tmpSeq[0] != tmpSeq[1][:-1]:
+            result = os.popen("echo '" + seq + "'|RNAcofold --noPS")
+            result = result.read().split()
+            structure = result[1].replace("&", "")
+            min_en = result[-1][:-1].replace("(", "")
+            min_en = float(min_en)
+        else:
+            # RNAcofold creates warnings, which is considered as error in galaxy system
+            # input seq cases: GGTT&GGTT   or   GGTT&GGTTT
+            # therefore we use python print function
+            print "WARNING: Both input strands are identical, thus inducing rotationally symmetry! Symmetry correction might be required to compute actual MF"
+            structure, min_en = '.'*len(seq), 0
         return structure, min_en
 
     def runRNAfold(self, seq):
@@ -177,18 +192,26 @@ class FoldFilter():
         return structure, min_en
 
     def runDotKnot(self, seq):
+        os.chdir(self.globalPath + "tools/compbio")
+        
         os.chdir("dotknot")
         file = open("file.txt", "w")
         file.write(">tmp\n" + seq + "\n")
         file.close()
-        result = os.popen("python dotknot.py file.txt -klg")
+        resFile = os.popen("python dotknot.py file.txt -klg")
         os.chdir('..')
-        result = result.read()
-        lines = result.split("\n")
-        if len(lines) > 25:
-            start, end, min_en = lines[21].split()
+        result = resFile.read()
+        resFile.close()
+
+        os.chdir(self.globalPath + "database" + self.localPath)
+        
+        resultSize = result.split("\n")
+        if len(resultSize) > 25:
+            lines = result.split("energy:")[1].strip()
+            lines = lines.split("\n")
+            start, end, min_en = lines[0].split()
             start, end, min_en = int(start), int(end), float(min_en)
-            tmpStruct = lines[23]
+            tmpStruct = lines[2]
             structure = (start - 1) * "."
             structure += tmpStruct
             structure += (len(tmpStruct) - end) * "."
@@ -211,11 +234,12 @@ def main():
     foldFilter.parseFastaFile(roboFile)
     foldFilter.computeScores()
     result = foldFilter.getTabularFormat()
-
+    
     out = open(output_file, "w")
     out.write(str(result))
-    out.close()      
+    out.close() 
 
 
 if __name__ == "__main__":
     main()
+    print "10" 

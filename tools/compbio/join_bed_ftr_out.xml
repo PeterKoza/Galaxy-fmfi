@@ -1,0 +1,37 @@
+<tool id="JOIN_BED_FTR_OUTPUT"
+      name="Join BED and FoldFilter output"
+      version="1.0.0">
+  <description>files into one</description>
+  <command interpreter="python">join_bed_ftr_out.py $input1 $input2 $output</command>
+  <inputs>
+    <param format="bed" name="input1" type="data" label="Source file(bed)"/>
+    <param format="tabular" name="input2" type="data" label="FoldFilter output(tabular)"/>
+  </inputs>
+  <outputs>
+    <data format="bed" name="output" />
+  </outputs>
+  <help>
+This tool joins two tables. First input needs to be bed file and the second output file from FoldFilter. Joins is performed based on 4. column of bed and 1. column of FoldFilter output.
+Result is bed format, whitch consists only rows from second input.
+
+**Example**
+
+bed::
+
+  NC_006067.1	880789	880877	NC_006067.1:880789-880877	0	+
+  NC_006069.1	2071680	2071773	NC_006069.1:2071680-2071773	0	+
+  NC_006071.1	2386920	2387016	NC_006071.1:2386920-2387016	0	+
+  NC_006072.1	1873858	1873951	NC_006072.1:1873858-1873951	0	+
+
+FoldFilter output::
+
+  #sequence	total score	sm1	sm2	smHairpin
+  NC_006069.1:2240493-2240586	56.8888888889	5.55555555556	0	51.3333333333
+  NC_006071.1:1892910-1892998	42.1666666667	3.05555555556	27.7777777778	11.3333333333
+
+Join::
+
+  NC_006069.1	2240493	2240586	NC_006069.1:2240493-2240586	56.8888888889	+
+  NC_006071.1	1892910	1892998	NC_006071.1:1892910-1892998	42.1666666667	+
+  </help>
+</tool>

@@ -46,7 +46,7 @@ class Descriptor(data.Text):
             return True
         except Exception:
             pass
-        return True
+        return False
 
     def set_peek( self, dataset, is_multi_byte=False ):
         pass
@@ -283,7 +283,7 @@ class FoldFilter(data.Text):
             return True
         except Exception:
             pass
-        return True
+        return False
 
     def checkLine(self, line):
         parameters = line.split()
@@ -315,20 +315,4 @@ class FoldFilter(data.Text):
         elif els[0] == "":
             return False
         return True
-
-
-
-
-from galaxy.datatypes.tabular import Tabular
-
-class FoldFilterTabular(Tabular):
-    file_ext = "ftrt"
-    column_names = ['sequence']
-
-    def set_meta(self, dataset, **kwd):
-        Tabular.set_meta(self, dataset)
-        ftrtFile = open(dataset.file_name, "r")
-        firstLine = ftrtFile.readline()
-        ftrtFile.close()
-        dataset.metadata.column_names = ["sequence"] + firstLine.split("\t")[1:-1] + ["total score"]
 
