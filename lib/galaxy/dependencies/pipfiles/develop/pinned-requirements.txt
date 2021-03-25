@@ -23,7 +23,7 @@ pytz==2017.3
 jinja2==2.9.6
 twill==0.9.1
 pygithub3==0.5.1
-pyyaml==3.12
+pyyaml==5.4
 sphinx==1.6.5
 pbr==3.1.1
 sphinxcontrib-websupport==1.0.1
